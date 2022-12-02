@@ -1,0 +1,9 @@
+<h1>Carrito de compras</h1>
+<div class="conteiner-cart">
+  <ul>
+    <li *ngFor="let s of (cartList$ | async)" class="lista">
+      {{s.style}} -{{ s.color}} - {{s.quantity}}
+    </li>
+  </ul>
+</div>
+ <button class="comprar">Comprar</button>

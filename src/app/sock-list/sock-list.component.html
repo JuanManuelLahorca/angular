@@ -1,0 +1,28 @@
+<h1>Lista de medias</h1>
+<table>
+  <thead>
+    <th>Estilo</th>
+    <th>Color</th>
+    <th>Talle</th>
+    <th>Precio</th>
+     <th>Marcar cantidad</th>
+    <th>Stock</th>
+    <th>Agregar a carrito</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sock of socks" [ngClass]="{'clearence': sock.clearence}">
+      <td>{{ sock.style }}</td>
+      <td>{{ sock.color }}</td>
+      <td>{{ sock.size }}</td>
+      <td>{{ sock.price | currency }}</td>
+      <td>
+        <app-input-integer [(quantity)]="sock.quantity" [max]="sock.stock" (maxReached)="maxReached($event)" *ngIf="sock.stock"></app-input-integer>
+      </td>
+      <td><span class="sinStock" *ngIf="sock.stock == 0">Sin Stock</span></td>
+      <td>
+        <button class="btn-agregar" (click)="addToCart(sock)">Agregar</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
